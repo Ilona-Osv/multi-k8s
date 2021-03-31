@@ -10,10 +10,10 @@ script:
   - docker run -e CI=true ilonaosv/react-test npm test
 
 after_success:
-  - docker build -t ilonaosv/multi-client -t ./client
-  - docker build -t ilonaosv/multi-nginx -t ./nginx
-  - docker build -t ilonaosv/multi-server -t ./server
-  - docker build -t ilonaosv/multi-worker -t ./worker
+  - docker build -t ilonaosv/multi-client ./client
+  - docker build -t ilonaosv/multi-nginx ./nginx
+  - docker build -t ilonaosv/multi-server ./server
+  - docker build -t ilonaosv/multi-worker ./worker
 
   #Login to docker
   - echo "$DOCKER_PASS" | docker login -u "$DOCKER_ID" --password-stdin
