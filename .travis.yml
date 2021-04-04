@@ -7,4 +7,9 @@ before_install:
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud components update kubectl #install & upd kubectl on travis env
   - gcloud auth activate-service-account --key-file service-account.json #auth on GC
+  - gcloud config set project multi-k8s-309708 #GC project to bind to
+  - gcloud config set compute/zone europe-north1-a #GC cluster location
+  - gcloud container clusters get-credentials multi-cluster #GC cluster
+  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  # - 
 
