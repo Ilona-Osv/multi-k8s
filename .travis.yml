@@ -15,3 +15,6 @@ before_install:
 
 script:
   - docker run -e CI=true ilonaosv/react-test npm test
+
+deploy:
+  provider: script
