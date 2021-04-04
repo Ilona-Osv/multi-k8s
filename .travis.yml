@@ -10,6 +10,8 @@ before_install:
   - gcloud config set project multi-k8s-309708 #GC project to bind to
   - gcloud config set compute/zone europe-north1-a #GC cluster location
   - gcloud container clusters get-credentials multi-cluster #GC cluster
-  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  # - 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t ilonaosv/react-test -f ./client/Dockerfile.dev ./client
 
+script:
+  - docker run -e CI=true ilonaosv/react-test npm test
